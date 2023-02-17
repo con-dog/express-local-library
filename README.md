@@ -1,4 +1,4 @@
 # Run
 ```bash
-DEBUG=express-locallibrary-tutorial:* npm start
+DEBUG=express-local-library:* npm start
 ```
