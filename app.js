@@ -17,7 +17,7 @@ const mongoPass = process.env.MONGO_PASS;
 
 mongoose.set('strictQuery', false);
 const mongoDB = `mongodb+srv://${mongoUser}:${mongoPass}@cluster1.i1gjaks.mongodb.net/local_library?retryWrites=true&w=majority`;
-
+console.log(mongoDB);
 main().catch((err) => console.log(err));
 async function main() {
   await mongoose.connect(mongoDB);
