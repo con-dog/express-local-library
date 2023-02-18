@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -8,6 +9,14 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const app = express();
+
+mongoose.set('strictQuery', false);
+const mongoDB = 'mongodb+srv://admin:admin@cluster1.i1gjaks.mongodb.net/local_library?retryWrites=true&w=majority';
+
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
