@@ -1,4 +1,5 @@
 const createError = require('http-errors');
+const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
@@ -10,8 +11,12 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 
+dotenv.config();
+const mongoUser = process.env.MONGO_USER;
+const mongoPass = process.env.MONGO_PASS;
+
 mongoose.set('strictQuery', false);
-const mongoDB = 'mongodb+srv://admin:admin@cluster1.i1gjaks.mongodb.net/local_library?retryWrites=true&w=majority';
+const mongoDB = `mongodb+srv://${mongoUser}:${mongoPass}@cluster1.i1gjaks.mongodb.net/local_library?retryWrites=true&w=majority`;
 
 main().catch((err) => console.log(err));
 async function main() {
